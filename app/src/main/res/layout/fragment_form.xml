@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black1"
+    android:orientation="vertical"
+    tools:context=".ui.FormFragment">
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:hint="Input title"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_description"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/et_title" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        app:layout_constraintTop_toBottomOf="@id/et_description" />
+
+    <View
+        android:id="@+id/ellipse_6"
+        android:layout_width="14dp"
+        android:layout_height="11dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/ellipse"
+        app:layout_constraintLeft_toLeftOf="@id/rectangle_1"
+        app:layout_constraintTop_toBottomOf="@id/rectangle_1" />
+
+
+    <EditText
+        android:id="@+id/restangle3"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="491dp"
+        android:background="@drawable/restangle3"
+        app:layout_constraintLeft_toRightOf="@id/rectangle2"
+        app:layout_constraintTop_toBottomOf="@id/btn_save" />
+
+    <EditText
+        android:id="@+id/rectangle2"
+        android:layout_width="80dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="460dp"
+        android:background="@drawable/restangle2"
+        app:layout_constraintLeft_toRightOf="@id/rectangle_1"
+        app:layout_constraintTop_toBottomOf="@id/btn_save" />
+
+    <EditText
+        android:id="@+id/rectangle_1"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="460dp"
+        android:background="@drawable/restangle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_save" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
