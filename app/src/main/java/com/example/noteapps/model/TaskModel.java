@@ -1,14 +1,27 @@
 package com.example.noteapps.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
-
+@Entity
 public class TaskModel implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    public int id;
     private String title;
-    private String description;
+    private String data;
 
-    public TaskModel(String title, String description) {
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public TaskModel(String title) {
         this.title = title;
-        this.description = description;
     }
 
     public String getTitle() {
@@ -19,11 +32,4 @@ public class TaskModel implements Serializable {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

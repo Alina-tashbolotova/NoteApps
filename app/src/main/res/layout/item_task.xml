@@ -13,13 +13,6 @@
         android:textColor="@color/white"
         android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/description_item"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="@string/description"
-        android:textColor="@color/white"
-        android:textSize="18dp" />
 
 
 </LinearLayout>

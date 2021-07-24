@@ -3,6 +3,7 @@ package com.example.noteapps.ui.home;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,11 +22,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.noteapps.MainActivity;
 import com.example.noteapps.R;
 import com.example.noteapps.databinding.FragmentHomeBinding;
 import com.example.noteapps.model.TaskModel;
+import com.example.noteapps.utils.MyApp;
 import com.google.android.material.navigation.NavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -36,6 +39,7 @@ public class HomeFragment extends Fragment {
     ArrayList<TaskModel> models = new ArrayList<>();
     FragmentHomeBinding binding;
     HomeAdapter adapter = new HomeAdapter();
+    public boolean isChange = true;
 
 
     public View onCreateView(LayoutInflater inflater,
@@ -45,8 +49,17 @@ public class HomeFragment extends Fragment {
         setResultList();
         setupSearch();
         createList();
+        getNotesFromDB();
         return binding.getRoot();
     }
+
+    private void getNotesFromDB() {
+        MyApp.getInstance().noteDao().getAll().observe(getViewLifecycleOwner(), list -> {
+            Log.e("TAG", "getNotesFromDB:" + list.toString());
+
+        });
+    }
+
 
     private void setupSearch() {
         binding.edSearch.addTextChangedListener(new TextWatcher() {
@@ -62,7 +75,6 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
 
             }
 
@@ -83,7 +95,7 @@ public class HomeFragment extends Fragment {
 
     private void createList() {
         models = new ArrayList<>();
-        models.add(new TaskModel("Нужно", "сделать"));
+        models.add(new TaskModel("Нужно"));
     }
 
 
@@ -91,10 +103,33 @@ public class HomeFragment extends Fragment {
         adapter = new HomeAdapter();
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.addModel(new TaskModel("ФРУКТЫ", "вишня,яблоко,банан,гранат,дыня,арбуз"));
-        adapter.addModel(new TaskModel("ОВОЩИ", "картошка,морковь,лук,редис,свекла,тыква"));
-        adapter.addModel(new TaskModel("СУХОФРУКТЫ", "орешки,чернослив,финики,курага"));
+        adapter.addModel(new TaskModel("ФРУКТЫ"));
+        adapter.addModel(new TaskModel("ОВОЩИ"));
+        adapter.addModel(new TaskModel("СУХОФРУКТЫ"));
     }
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_dash) {
+            if (isChange) {
+                item.setIcon(R.drawable.ic_dashboard24);
+                binding.recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                isChange = false;
+            } else {
+                item.setIcon(R.drawable.ic_baseline_list_24);
+                binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                isChange = true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void onDestroyView() {

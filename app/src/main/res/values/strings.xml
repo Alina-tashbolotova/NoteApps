@@ -26,4 +26,9 @@
     <string name="save">SAVE</string>
     <string name="support">SUPPORT</string>
     <string name="need_to_do">Нужно сделать:</string>
+    <string name="string_function">Очень удобный функционал</string>
+    <string name="qualitative">Быстрый,качественный продукт</string>
+    <string name="skip">Пропустить</string>
+    <string name="functional">Куча функции и интересных фишек</string>
+    <string name="ready">Готово</string>
 </resources>

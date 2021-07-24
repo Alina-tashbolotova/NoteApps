@@ -1,20 +1,22 @@
 package com.example.noteapps;
 
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
+import android.util.Base64;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
 
-import com.google.android.material.snackbar.Snackbar;
+import com.bumptech.glide.Glide;
+import com.example.noteapps.utils.PreferencesHelper;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.core.app.NotificationCompat;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,14 +26,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.noteapps.databinding.ActivityMainBinding;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+
 public class MainActivity extends AppCompatActivity {
+
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    Uri imageUri;
     ImageView navUsername;
+    SharedPreferences sharedPreferences;
+    PreferencesHelper preferencesHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -46,12 +54,54 @@ public class MainActivity extends AppCompatActivity {
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+
+        preferencesHelper = new PreferencesHelper();
+        preferencesHelper.init(MainActivity.this);
+        if (!preferencesHelper.isShown()) {
+            navController.navigate(R.id.onBoardFragment);
+        }
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         binding.appBarMain.fab.setOnClickListener(view -> {
             navController.navigate(R.id.action_nav_home_to_formFragment);
         });
+        destination(navController);
         imageView();
+        saveImage();
+
+    }
+
+    ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
+            uri -> {
+                try {
+                    final InputStream imageStream = getContentResolver().openInputStream(uri);
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] b = baos.toByteArray();
+                    String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+                    sharedPreferences.edit().putString("key", encodedImage).commit();
+                    preferencesHelper.saveImage();
+                    Glide.with(this)
+                            .load(uri)
+                            .circleCrop()
+                            .into(navUsername);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+
+    private void destination(NavController navController) {
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (controller.getGraph().getStartDestination() == destination.getId()) {
+                binding.appBarMain.fab.show();
+            } else {
+                binding.appBarMain.fab.hide();
+            }
+            if (destination.getId() == R.id.formFragment || destination.getId() == R.id.onBoardFragment) {
+                binding.appBarMain.toolbar.setVisibility(View.GONE);
+            }
+        });
 
     }
 
@@ -72,26 +122,57 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
         navUsername = (ImageView) headerView.findViewById(R.id.imageView);
-        navUsername.setOnClickListener(v -> {
 
-        });
 
         navUsername.setOnClickListener(v -> {
-            Intent gallery = new Intent("android.intent.action.GET_CONTENT");
-            gallery.addCategory("android.intent.category.OPENABLE");
-            gallery.setType("image/*");
-            MainActivity.this.startActivityForResult(gallery, 20);
+            mGetContent.launch("image/*");
         });
+
+        navUsername.setOnLongClickListener(v -> {
+            AlertDialog dialog = new AlertDialog.Builder(navUsername.getContext()).create();
+            dialog.setTitle("Внимание!!!");
+            dialog.setMessage("Вы точно хотите удалить?");
+            dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Да", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    preferencesHelper.onSaveDefaultImage();
+                    Glide.with(MainActivity.this)
+                            .load(mGetContent)
+                            .circleCrop()
+                            .placeholder(R.drawable.ic_person)
+                            .into(navUsername);
+                }
+            });
+            dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Нет", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            dialog.show();
+            return false;
+        });
+
+
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 20 && resultCode == -1 && data != null) {
-            Uri uri;
-            this.imageUri = uri = data.getData();
-            this.navUsername.setImageURI(uri);
+    private void saveImage() {
+        sharedPreferences = getSharedPreferences("", MODE_PRIVATE);
+        if (preferencesHelper.isShownImage()) {
+            if (!sharedPreferences.getString("key", "").equals("")) {
+                byte[] decString = Base64.decode(sharedPreferences.getString("key", ""), Base64.DEFAULT);
+                Bitmap decByte = BitmapFactory.decodeByteArray(decString, 0, decString.length);
+                navUsername.setImageBitmap(decByte);
+            }
         }
+
     }
+
 }
+
+
+
+
+
+

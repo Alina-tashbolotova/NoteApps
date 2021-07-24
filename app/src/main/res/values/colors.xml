@@ -17,4 +17,6 @@
     <color name="black_lighter">#131212</color>
     <color name="light_milky">#A18D5D</color>
     <color name="black1">#0E0C0C</color>
+    <color name="functional_color">#F3F3F3</color>
+    <color name="grey1">#8E8B8B</color>
 </resources>

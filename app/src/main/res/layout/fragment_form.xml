@@ -6,72 +6,98 @@
     android:layout_height="match_parent"
     android:background="@color/black1"
     android:orientation="vertical"
-    tools:context=".ui.FormFragment">
+    tools:context=".form.FormFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/black_lighter"
+        app:layout_anchorGravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/Theme.NoteApps.PopupOverlay"
+        app:titleTextColor="@color/silver">
+
+        <TextView
+            android:id="@+id/txt_ready"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin320"
+            android:text="@string/ready"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/sp_txt"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <EditText
         android:id="@+id/et_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/et_start"
+        android:gravity="start"
         android:hint="Input title"
         android:textColorHint="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_description"
-        android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/et_title" />
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginStart="@dimen/btb_start"
+        android:layout_marginBottom="@dimen/btn_bottom"
+        android:background="@drawable/restangle3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/btn_2" />
+
 
     <Button
-        android:id="@+id/btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        app:layout_constraintTop_toBottomOf="@id/et_description" />
-
-    <View
-        android:id="@+id/ellipse_6"
-        android:layout_width="14dp"
-        android:layout_height="11dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/ellipse"
-        app:layout_constraintLeft_toLeftOf="@id/rectangle_1"
-        app:layout_constraintTop_toBottomOf="@id/rectangle_1" />
-
-
-    <EditText
-        android:id="@+id/restangle3"
-        android:layout_width="80dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="491dp"
-        android:background="@drawable/restangle3"
-        app:layout_constraintLeft_toRightOf="@id/rectangle2"
-        app:layout_constraintTop_toBottomOf="@id/btn_save" />
-
-    <EditText
-        android:id="@+id/rectangle2"
-        android:layout_width="80dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="460dp"
+        android:id="@+id/btn_2"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginStart="@dimen/btn2_start"
+        android:layout_marginBottom="@dimen/btb2_bottom"
         android:background="@drawable/restangle2"
-        app:layout_constraintLeft_toRightOf="@id/rectangle_1"
-        app:layout_constraintTop_toBottomOf="@id/btn_save" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/btn_1" />
 
-    <EditText
-        android:id="@+id/rectangle_1"
-        android:layout_width="80dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="460dp"
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginStart="@dimen/btn3_start"
+        android:layout_marginBottom="@dimen/btn3_bottom"
         android:background="@drawable/restangle"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_save" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <RadioButton
+        android:id="@+id/rb_1"
+        android:layout_width="@dimen/rad_wid"
+        android:layout_height="@dimen/radio_hei"
+        android:layout_marginStart="@dimen/rad_start"
+        android:layout_marginBottom="@dimen/rad_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <RadioButton
+        android:id="@+id/rb_2"
+        android:layout_width="@dimen/rad_wid"
+        android:layout_height="@dimen/radio_hei"
+        android:layout_marginStart="@dimen/rad100"
+        android:layout_marginBottom="@dimen/bottom13"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rb_1" />
+
+    <RadioButton
+        android:id="@+id/rb_3"
+        android:layout_width="@dimen/rad_wid"
+        android:layout_height="@dimen/radio_hei"
+        android:layout_marginStart="@dimen/rad85"
+        android:layout_marginBottom="@dimen/bottom13"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rb_2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

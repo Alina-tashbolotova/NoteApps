@@ -11,6 +11,7 @@ import com.example.noteapps.R;
 import com.example.noteapps.model.TaskModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     ArrayList<TaskModel> list = new ArrayList<>();
@@ -18,9 +19,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void addModel(TaskModel model) {
         list.add(model);
         notifyDataSetChanged();
-
-
     }
+    public void setList(List<TaskModel> models){
+        this.list.addAll(models);
+        notifyDataSetChanged();
+    }
+
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_task, parent, false);
@@ -49,12 +53,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title_item);
-            description = itemView.findViewById(R.id.description_item);
         }
 
         public void onBind(TaskModel taskModel) {
             title.setText(taskModel.getTitle());
-            description.setText(taskModel.getDescription());
 
         }
     }

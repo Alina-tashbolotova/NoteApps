@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_light"
+    tools:context=".onBoardd.ThereeFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_there"
+        android:layout_width="287dp"
+        android:layout_height="264dp"
+        android:layout_marginStart="55dp"
+        app:lottie_repeatCount="1000"
+
+        android:layout_marginTop="130dp"
+        android:elevation="5dp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/topstock" />
+
+    <TextView
+        android:id="@+id/txt_functional_there"
+        android:layout_width="282dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="445dp"
+        android:text="@string/functional"
+        android:textColor="@color/functional_color"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/txt_work_there"
+        android:layout_width="130dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="520dp"
+        android:text="Начать работу"
+        android:textColor="@color/grey1"
+        android:textSize="16sp" />
+
+</RelativeLayout>
