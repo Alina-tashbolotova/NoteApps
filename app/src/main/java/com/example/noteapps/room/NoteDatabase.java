@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.noteapps.model.TaskModel;
 
-@Database(entities = TaskModel.class,version = 1,exportSchema = false)
+@Database(entities = TaskModel.class,version = 3,exportSchema = false)
 public abstract class NoteDatabase extends RoomDatabase {
    public abstract NoteDao noteDao();
 }

@@ -31,7 +31,7 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/formFragment"
-        android:name="com.example.noteapps.form.FormFragment"
+        android:name="com.example.noteapps.ui.form.FormFragment"
         android:label="fragment_form"
         tools:layout="@layout/fragment_form" />
     <fragment

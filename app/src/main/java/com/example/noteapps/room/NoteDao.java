@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.noteapps.model.TaskModel;
 
@@ -20,5 +21,9 @@ public interface NoteDao {
 
     @Delete
     void delete(TaskModel taskModel);
+
+    @Update
+    void update(TaskModel taskModel);
 }
+
 

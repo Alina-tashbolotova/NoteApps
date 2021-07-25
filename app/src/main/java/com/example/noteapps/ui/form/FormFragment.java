@@ -1,9 +1,7 @@
-package com.example.noteapps.form;
+package com.example.noteapps.ui.form;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -34,7 +32,6 @@ public class FormFragment extends Fragment {
     }
 
     private void initClickListener() {
-        model = new TaskModel("Information about lesson");
         binding.txtReady.setOnClickListener(v -> {
             save();
             navClose();
@@ -51,16 +48,14 @@ public class FormFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.txtReady.setOnClickListener(v -> save());
-        MyApp.getInstance().noteDao().insertNote(model);
+
     }
 
     private void save() {
         String title2 = binding.etTitle.getText().toString();
         model = new TaskModel(title2);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("key", model);
-        getParentFragmentManager().setFragmentResult("task", bundle);
+        MyApp.getInstance().noteDao().insertNote(model);
+        Log.e("TAG", "save: ");
         close();
     }
 

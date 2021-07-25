@@ -29,12 +29,12 @@ public class OnBoardFragment extends Fragment {
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentOnBoardBinding.inflate(inflater, container, false);
-        initviewpager();
+        initViewpager();
 
         return binding.getRoot();
     }
 
-    private void initviewpager() {
+    private void initViewpager() {
         if (binding.pager != null){
             ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getActivity());
             binding.pager.setAdapter(pagerAdapter);

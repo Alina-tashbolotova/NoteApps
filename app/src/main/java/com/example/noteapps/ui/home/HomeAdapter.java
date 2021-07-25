@@ -14,13 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
-    ArrayList<TaskModel> list = new ArrayList<>();
+    List<TaskModel> list = new ArrayList<>();
 
     public void addModel(TaskModel model) {
         list.add(model);
         notifyDataSetChanged();
     }
     public void setList(List<TaskModel> models){
+        list.clear();
         this.list.addAll(models);
         notifyDataSetChanged();
     }

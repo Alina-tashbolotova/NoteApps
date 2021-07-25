@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black1"
     android:orientation="vertical"
-    tools:context=".form.FormFragment">
+    tools:context=".ui.form.FormFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

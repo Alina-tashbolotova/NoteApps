@@ -18,15 +18,17 @@ public class PreferencesHelper {
         return sharedPreferences.getBoolean("isShown", false);
 
     }
-    public  void saveImage(){
-        sharedPreferences.edit().putBoolean("key",true).apply();
+
+    public void saveImage() {
+        sharedPreferences.edit().putBoolean("key", true).apply();
     }
 
-    public  void onSaveDefaultImage(){
-        sharedPreferences.edit().putBoolean("key",false).apply();
+    public void onSaveDefaultImage() {
+        sharedPreferences.edit().putBoolean("key", false).apply();
     }
-    public boolean isShownImage(){
-        return  sharedPreferences.getBoolean("key",false);
+
+    public boolean isShownImage() {
+        return sharedPreferences.getBoolean("key", false);
     }
 
 }

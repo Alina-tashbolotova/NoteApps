@@ -9,15 +9,15 @@ public class TaskModel implements Serializable {
     @PrimaryKey(autoGenerate = true)
     public int id;
     private String title;
-    private String data;
+    private String description;
 
 
-    public String getData() {
-        return data;
+    public String getDescription() {
+        return description;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public TaskModel(String title) {

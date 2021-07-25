@@ -34,9 +34,10 @@ import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
-    ArrayList<TaskModel> models = new ArrayList<>();
+    List<TaskModel> models = new ArrayList<>();
     FragmentHomeBinding binding;
     HomeAdapter adapter = new HomeAdapter();
     public boolean isChange = true;
@@ -46,18 +47,24 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         initRecycler();
-        setResultList();
-        setupSearch();
-        createList();
         getNotesFromDB();
+        setupSearch();
+
+
         return binding.getRoot();
     }
 
     private void getNotesFromDB() {
-        MyApp.getInstance().noteDao().getAll().observe(getViewLifecycleOwner(), list -> {
-            Log.e("TAG", "getNotesFromDB:" + list.toString());
-
+        MyApp.getInstance().noteDao().getAll().observe(requireActivity(), new Observer<List<TaskModel>>() {
+            @Override
+            public void onChanged(List<TaskModel> taskModels) {
+                adapter.setList(taskModels);
+                models = taskModels;
+            }
         });
+
+
+
     }
 
 
@@ -93,19 +100,12 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void createList() {
-        models = new ArrayList<>();
-        models.add(new TaskModel("Нужно"));
-    }
 
 
     private void initRecycler() {
         adapter = new HomeAdapter();
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.addModel(new TaskModel("ФРУКТЫ"));
-        adapter.addModel(new TaskModel("ОВОЩИ"));
-        adapter.addModel(new TaskModel("СУХОФРУКТЫ"));
     }
 
     @Override
@@ -137,16 +137,7 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    private void setResultList() {
-        getParentFragmentManager().setFragmentResultListener("task", getViewLifecycleOwner(), (requestKey, result) -> {
-            TaskModel taskModel = (TaskModel) result.getSerializable("key");
-            if (taskModel != null) {
-                adapter.addModel(taskModel);
 
-            }
-
-        });
-    }
 
 
 }
