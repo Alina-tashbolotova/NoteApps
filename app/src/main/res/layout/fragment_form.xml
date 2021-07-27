@@ -8,35 +8,50 @@
     android:orientation="vertical"
     tools:context=".ui.form.FormFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+
+    <TextView
+        android:id="@+id/txt_ready"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/ready"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/sp_txt"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/view_view"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/black_lighter"
-        app:layout_anchorGravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/Theme.NoteApps.PopupOverlay"
-        app:titleTextColor="@color/silver">
+        android:layout_height="@dimen/view_heidth"
+        android:background="@color/silver"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_title" />
 
-        <TextView
-            android:id="@+id/txt_ready"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin320"
-            android:text="@string/ready"
-            android:textColor="@color/orange"
-            android:textSize="@dimen/sp_txt"
-            android:textStyle="bold" />
-
-    </androidx.appcompat.widget.Toolbar>
+    <ImageView
+        android:id="@+id/image_back"
+        android:layout_width="@dimen/back33"
+        android:layout_height="@dimen/back25"
+        android:layout_marginStart="@dimen/back19"
+        android:layout_marginTop="@dimen/back_top18"
+        android:background="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/et_start"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/txt_h70"
         android:gravity="start"
-        android:hint="Input title"
+        android:hint="@string/hint_txt"
+        android:paddingStart="@dimen/pad_start15"
+        android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 

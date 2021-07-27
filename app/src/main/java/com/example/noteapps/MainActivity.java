@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
             }
             if (destination.getId() == R.id.formFragment || destination.getId() == R.id.onBoardFragment) {
                 binding.appBarMain.toolbar.setVisibility(View.GONE);
+            } else {
+                binding.appBarMain.toolbar.setVisibility(View.VISIBLE);
             }
         });
 

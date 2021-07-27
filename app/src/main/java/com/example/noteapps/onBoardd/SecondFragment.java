@@ -21,7 +21,7 @@ public class SecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentSecondBinding.inflate(inflater,container,false);
+        binding = FragmentSecondBinding.inflate(inflater, container, false);
         skip_view();
         return binding.getRoot();
     }

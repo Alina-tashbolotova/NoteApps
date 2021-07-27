@@ -35,7 +35,7 @@ public class OnBoardFragment extends Fragment {
     }
 
     private void initViewpager() {
-        if (binding.pager != null){
+        if (binding.pager != null) {
             ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getActivity());
             binding.pager.setAdapter(pagerAdapter);
         }

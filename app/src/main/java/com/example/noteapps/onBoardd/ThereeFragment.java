@@ -21,7 +21,7 @@ public class ThereeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentThereeBinding.inflate(inflater,container,false);
+        binding = FragmentThereeBinding.inflate(inflater, container, false);
         work_view();
         return binding.getRoot();
     }

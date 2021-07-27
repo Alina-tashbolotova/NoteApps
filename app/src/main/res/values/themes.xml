@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.NoteApps" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    <style name="Theme.NoteApps" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -22,4 +22,6 @@
     <style name="Theme.NoteApps.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.NoteApps.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>

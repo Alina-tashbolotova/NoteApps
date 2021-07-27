@@ -31,4 +31,6 @@
     <string name="skip">Пропустить</string>
     <string name="functional">Куча функции и интересных фишек</string>
     <string name="ready">Готово</string>
+    <string name="txt_title">Нужно сделать:</string>
+    <string name="hint_txt">Введите текст</string>
 </resources>

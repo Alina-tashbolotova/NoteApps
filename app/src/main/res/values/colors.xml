@@ -19,4 +19,5 @@
     <color name="black1">#0E0C0C</color>
     <color name="functional_color">#F3F3F3</color>
     <color name="grey1">#8E8B8B</color>
+    <color name="style_grey">#191818</color>
 </resources>

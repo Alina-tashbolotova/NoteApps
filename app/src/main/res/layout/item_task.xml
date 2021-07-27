@@ -7,11 +7,17 @@
 
     <TextView
         android:id="@+id/title_item"
+        android:paddingStart="@dimen/pad_start15"
+        android:paddingTop="@dimen/pad_top_15"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title"
+        android:layout_height="match_parent"
+        android:text="@string/txt_title"
         android:textColor="@color/white"
-        android:textSize="22sp" />
+        android:background="@drawable/style_notes2"
+        android:paddingBottom="@dimen/pad_bottom35"
+        android:textSize="@dimen/txt_size16" />
+
+
 
 
 

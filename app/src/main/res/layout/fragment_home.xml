@@ -10,15 +10,15 @@
     <EditText
         android:id="@+id/ed_search"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="30dp"
+        android:layout_height="@dimen/ed_h55"
+        android:layout_marginStart="@dimen/ed_mar_start30"
+        android:layout_marginTop="@dimen/ed"
+        android:layout_marginEnd="@dimen/ed_mar_end30"
         android:background="@drawable/style_inputs"
         android:drawableLeft="@drawable/shape3"
-        android:drawablePadding="12dp"
+        android:drawablePadding="@dimen/draw_padd_12"
         android:hint="@string/search"
-        android:paddingStart="30dp"
+        android:paddingStart="@dimen/padd_start_30"
         android:textColorHint="@color/dark_grey"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,8 +29,8 @@
         android:layout_height="@dimen/rv_height"
         android:padding="@dimen/padding"
         android:scrollbars="vertical"
-        tools:listitem="@layout/item_task"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ed_search" />
+        app:layout_constraintTop_toBottomOf="@id/ed_search"
+        tools:listitem="@layout/item_task" />
 </androidx.constraintlayout.widget.ConstraintLayout>

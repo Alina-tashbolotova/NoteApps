@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_formFragment"
-            app:destination="@id/formFragment" />
+            app:destination="@id/formFragment"
+            app:enterAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_nav_home_to_onBoardFragment"
             app:destination="@id/onBoardFragment" />
@@ -33,7 +34,12 @@
         android:id="@+id/formFragment"
         android:name="com.example.noteapps.ui.form.FormFragment"
         android:label="fragment_form"
-        tools:layout="@layout/fragment_form" />
+        tools:layout="@layout/fragment_form" >
+
+        <action
+            android:id="@+id/action_formFragment_to_nav_home2"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/onBoardFragment"
         android:name="com.example.noteapps.onBoardd.OnBoardFragment"
