@@ -63,5 +63,8 @@
     <dimen name="back_top18">18dp</dimen>
     <dimen name="back33">33dp</dimen>
     <dimen name="back25">25dp</dimen>
+    <dimen name="marjin">155dp</dimen>
+    <dimen name="size20">20sp</dimen>
+    <dimen name="marjinstart100">100dp</dimen>
 
 </resources>

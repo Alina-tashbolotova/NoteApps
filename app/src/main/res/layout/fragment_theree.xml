@@ -13,8 +13,6 @@
         android:layout_height="264dp"
         android:layout_marginStart="55dp"
         app:lottie_repeatCount="1000"
-
-        android:layout_marginTop="130dp"
         android:elevation="5dp"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/topstock" />
@@ -24,20 +22,12 @@
         android:layout_width="282dp"
         android:layout_height="24dp"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="445dp"
+        android:layout_below="@id/lottie_there"
+        android:layout_marginTop="40dp"
         android:text="@string/functional"
         android:textColor="@color/functional_color"
         android:textSize="16sp" />
 
 
-    <TextView
-        android:id="@+id/txt_work_there"
-        android:layout_width="130dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="520dp"
-        android:text="Начать работу"
-        android:textColor="@color/grey1"
-        android:textSize="16sp" />
 
 </RelativeLayout>

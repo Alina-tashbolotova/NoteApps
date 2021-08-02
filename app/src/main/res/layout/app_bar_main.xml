@@ -9,10 +9,28 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:theme="@style/Theme.NoteApps.AppBarOverlay">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/black_lighter"
+            app:itemIconTint="@color/white"
+            app:popupTheme="@style/Theme.NoteApps.PopupOverlay"
+            app:titleTextColor="@color/silver">
+
+            <TextView
+                android:id="@+id/txt_not"
+                android:textColor="@color/silver"
+                android:textSize="@dimen/size20"
+                android:layout_marginStart="@dimen/marjinstart100"
+                android:text="@string/notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -24,22 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-
         android:backgroundTint="@color/orange"
-        app:srcCompat="@drawable/plus" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/black_lighter"
-        app:itemIconTint="@color/white"
-        app:layout_anchor="@+id/appBarLayout"
-        app:layout_anchorGravity="center"
-        app:popupTheme="@style/Theme.NoteApps.PopupOverlay"
-        app:titleTextColor="@color/silver">
-
-
-    </androidx.appcompat.widget.Toolbar>
+        android:src="@drawable/plus"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -22,21 +22,17 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSecondBinding.inflate(inflater, container, false);
-        skip_view();
+//       skip_view();
         return binding.getRoot();
     }
 
-    private void skip_view() {
-        binding.txtSkipSecond.setOnClickListener(v -> {
-            PreferencesHelper sharedPref = new PreferencesHelper();
-            sharedPref.init(requireContext());
-            sharedPref.onSaveOnBoardState();
-            close();
-        });
-    }
+//    private void skip_view() {
+//        binding.txtSkipSecond.setOnClickListener(v -> {
+//            PreferencesHelper sharedPref = new PreferencesHelper();
+//            sharedPref.init(requireContext());
+//            sharedPref.onSaveOnBoardState();
+//            close();
+//        });
+//    }
 
-    private void close() {
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
-        navController.navigateUp();
-    }
 }

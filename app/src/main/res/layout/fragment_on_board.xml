@@ -8,10 +8,55 @@
     android:background="@color/black_light"
     tools:context=".onBoardd.OnBoardFragment">
 
+
+
+   <TextView
+       android:id="@+id/txt_skip_onboard"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       android:layout_marginStart="300dp"
+       android:layout_marginEnd="@dimen/back_top18"
+       android:textSize="16sp"
+       android:layout_marginTop="@dimen/back_top18"
+       android:textColor="@color/orange"
+       android:text="@string/skip"
+       android:layout_width="93dp"
+       android:layout_height="23dp"/>
+
    <androidx.viewpager2.widget.ViewPager2
        android:id="@+id/pager"
-       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/txt_skip_onboard"
        android:layout_width="match_parent"
-       android:layout_height="match_parent" />
+       android:layout_height="wrap_content"
+       android:layout_marginTop="59dp"
+       tools:layout_editor_absoluteX="0dp" />
+
+
+   <TextView
+       android:id="@+id/txt_work_onboard"
+       android:layout_width="130dp"
+       android:layout_height="24dp"
+       android:layout_marginStart="145dp"
+       android:layout_marginBottom="139dp"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:text="Начать работу"
+       android:textColor="@color/grey1"
+       android:textSize="16sp" />
+
+   <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+       android:id="@+id/spring_dots_indicator"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:dotsColor="@color/orange"
+       app:dotsCornerRadius="8dp"
+       app:dotsSize="16dp"
+       app:dotsSpacing="4dp"
+       app:dotsStrokeWidth="2dp"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:layout_marginBottom="82dp"
+       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

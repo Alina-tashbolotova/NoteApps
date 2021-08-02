@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Заметки</string>
+    <string name="menu_home"></string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -19,7 +19,7 @@
     <string name="about_developers">О разработчиках</string>
     <string name="output">Выход</string>
     <string name="search">Поиск заметок</string>
-    <string name="notes">Заметки</string>
+    <string name="notes2">Заметки</string>
     <string name="user_name">Алина Ташболотова</string>
     <string name="mail_user">ALINA.TASHBOLOTOVA@MAIL.RU</string>
     <string name="input_description">Input description</string>
@@ -33,4 +33,5 @@
     <string name="ready">Готово</string>
     <string name="txt_title">Нужно сделать:</string>
     <string name="hint_txt">Введите текст</string>
+    <string name="notes">Заметки</string>
 </resources>

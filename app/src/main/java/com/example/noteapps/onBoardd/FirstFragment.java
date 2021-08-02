@@ -24,24 +24,21 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
-        view_skip();
+//        view_skip();
         return binding.getRoot();
     }
 
-    private void view_skip() {
-        binding.txtSkipFirst.setOnClickListener(v -> {
-            PreferencesHelper sharedPref = new PreferencesHelper();
-            sharedPref.init(requireContext());
-            sharedPref.onSaveOnBoardState();
-            close();
+//    private void view_skip() {
+//        binding.txtSkipFirst.setOnClickListener(v -> {
+//            PreferencesHelper sharedPref = new PreferencesHelper();
+//            sharedPref.init(requireContext());
+//            sharedPref.onSaveOnBoardState();
+//            close();
+//
+//        });
+//    }
 
-        });
-    }
 
-    private void close() {
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
-        navController.navigateUp();
-    }
 
 
 }

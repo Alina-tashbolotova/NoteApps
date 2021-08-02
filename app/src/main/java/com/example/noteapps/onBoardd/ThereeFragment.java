@@ -22,21 +22,8 @@ public class ThereeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentThereeBinding.inflate(inflater, container, false);
-        work_view();
         return binding.getRoot();
     }
 
-    private void work_view() {
-        binding.txtWorkThere.setOnClickListener(v -> {
-            PreferencesHelper sharedPref = new PreferencesHelper();
-            sharedPref.init(requireContext());
-            sharedPref.onSaveOnBoardState();
-            close();
-        });
-    }
-
-    private void close() {
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
-        navController.navigateUp();
-    }
+    
 }
